@@ -58,6 +58,7 @@
 @synthesize deleteButtonOffset;
 @synthesize reuseIdentifier;
 @synthesize highlighted;
+@synthesize selected;
 
 //////////////////////////////////////////////////////////////
 #pragma mark Constructors
@@ -261,6 +262,15 @@
 	}];
 }
 
+- (void)setSelected:(BOOL)aSelected {
+  selected = aSelected;
+	
+	[self.contentView recursiveEnumerateSubviewsUsingBlock:^(UIView *view, BOOL *stop) {
+		if ([view respondsToSelector:@selector(setSelected:)]) {
+			[(UIControl*)view setSelected:selected];
+		}
+	}];
+}
 
 //////////////////////////////////////////////////////////////
 #pragma mark Private methods
