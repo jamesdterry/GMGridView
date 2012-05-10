@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		16A0361014A012E60062437D /* UIGestureRecognizer+GMGridViewAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 16A0360E14A012E50062437D /* UIGestureRecognizer+GMGridViewAdditions.h */; };
+		16A0361014A012E60062437D /* UIGestureRecognizer+GMGridViewAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 16A0360E14A012E50062437D /* UIGestureRecognizer+GMGridViewAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		16A0361114A012E60062437D /* UIGestureRecognizer+GMGridViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A0360F14A012E50062437D /* UIGestureRecognizer+GMGridViewAdditions.m */; };
-		16A0361514A012EF0062437D /* UIView+GMGridViewAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 16A0361314A012EF0062437D /* UIView+GMGridViewAdditions.h */; };
+		16A0361514A012EF0062437D /* UIView+GMGridViewAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 16A0361314A012EF0062437D /* UIView+GMGridViewAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		16A0361614A012EF0062437D /* UIView+GMGridViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A0361414A012EF0062437D /* UIView+GMGridViewAdditions.m */; };
 		78509316149FAC2E000787E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78509315149FAC2E000787E4 /* Foundation.framework */; };
 		78509341149FAC61000787E4 /* GMGridView-Constants.h in Headers */ = {isa = PBXBuildFile; fileRef = 78509335149FAC61000787E4 /* GMGridView-Constants.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -122,13 +122,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78509341149FAC61000787E4 /* GMGridView-Constants.h in Headers */,
-				78509342149FAC61000787E4 /* GMGridView.h in Headers */,
-				78509344149FAC61000787E4 /* GMGridViewCell.h in Headers */,
+				16A0361014A012E60062437D /* UIGestureRecognizer+GMGridViewAdditions.h in Headers */,
 				78509346149FAC61000787E4 /* GMGridViewCell+Extended.h in Headers */,
 				78509347149FAC61000787E4 /* GMGridViewLayoutStrategies.h in Headers */,
-				16A0361014A012E60062437D /* UIGestureRecognizer+GMGridViewAdditions.h in Headers */,
+				78509342149FAC61000787E4 /* GMGridView.h in Headers */,
+				78509344149FAC61000787E4 /* GMGridViewCell.h in Headers */,
 				16A0361514A012EF0062437D /* UIView+GMGridViewAdditions.h in Headers */,
+				78509341149FAC61000787E4 /* GMGridView-Constants.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +219,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -241,6 +242,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -253,6 +255,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "include/$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -265,6 +268,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "include/$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
