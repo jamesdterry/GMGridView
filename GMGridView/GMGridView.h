@@ -111,6 +111,8 @@ typedef enum
 // Force the grid to update properties in an (probably) animated way.
 - (void)layoutSubviewsWithAnimation:(GMGridViewItemAnimation)animation;
 
+@property (nonatomic) CGPoint tapPoint;  // For intra-cell touch differntiation
+
 @end
 
 

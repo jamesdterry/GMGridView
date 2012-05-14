@@ -153,6 +153,8 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
 @synthesize firstPositionLoaded = _firstPositionLoaded;
 @synthesize lastPositionLoaded = _lastPositionLoaded;
 
+@synthesize tapPoint = _tapPoint;
+
 //////////////////////////////////////////////////////////////
 #pragma mark Constructors and destructor
 //////////////////////////////////////////////////////////////
@@ -1140,7 +1142,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
 
 - (void)tapGestureUpdated:(UITapGestureRecognizer *)tapGesture
 {
-    CGPoint locationTouch = [_tapGesture locationInView:self];
+    CGPoint locationTouch = _tapPoint = [_tapGesture locationInView:self];
     NSInteger position = [self.layoutStrategy itemPositionFromLocation:locationTouch];
     
     if (position != GMGV_INVALID_POSITION) 
