@@ -112,6 +112,7 @@ typedef enum
 - (void)layoutSubviewsWithAnimation:(GMGridViewItemAnimation)animation;
 
 @property (nonatomic) CGPoint tapPoint;  // For intra-cell touch differntiation
+@property (nonatomic) BOOL reloadWhenDone;
 
 @end
 

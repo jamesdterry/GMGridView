@@ -154,6 +154,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
 @synthesize lastPositionLoaded = _lastPositionLoaded;
 
 @synthesize tapPoint = _tapPoint;
+@synthesize reloadWhenDone = _reloadWhenDone;
 
 //////////////////////////////////////////////////////////////
 #pragma mark Constructors and destructor
@@ -590,6 +591,14 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     switch (panGesture.state) 
     {
         case UIGestureRecognizerStateEnded:
+        {
+          _autoScrollActive = NO;
+          if (_reloadWhenDone) {
+            _reloadWhenDone = NO;
+            [self reloadData];
+          }
+          break;
+        }
         case UIGestureRecognizerStateCancelled:
         case UIGestureRecognizerStateFailed:
         {
