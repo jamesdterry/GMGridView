@@ -26,6 +26,7 @@
 //  THE SOFTWARE.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "GMGridViewCell+Extended.h"
 #import "UIView+GMGridViewAdditions.h"
 
@@ -364,5 +365,29 @@
         self.contentView.alpha  = 1.4 - alpha;
     }
 }
+
+- (void)shakeStatus:(BOOL)enabled
+{
+  if (enabled) 
+  {
+    CGFloat rotation = 0.03;
+    
+    CABasicAnimation *shake = [CABasicAnimation animationWithKeyPath:@"transform"];
+    shake.duration = 0.13;
+    shake.autoreverses = YES;
+    shake.repeatCount  = MAXFLOAT;
+    shake.removedOnCompletion = NO;
+    shake.fromValue = [NSValue valueWithCATransform3D:CATransform3DRotate(self.layer.transform,-rotation, 0.0 ,0.0 ,1.0)];
+    shake.toValue   = [NSValue valueWithCATransform3D:CATransform3DRotate(self.layer.transform, rotation, 0.0 ,0.0 ,1.0)];
+    
+    [self.contentView.layer addAnimation:shake forKey:@"shakeAnimation"];
+  }
+  else
+  {
+    [self.contentView.layer removeAnimationForKey:@"shakeAnimation"];
+  }
+}
+
+
 
 @end

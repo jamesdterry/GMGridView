@@ -503,7 +503,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     }
     else if (gestureRecognizer == _longPressGesture)
     {
-        valid = (self.sortingDelegate || self.enableEditOnLongPress) && !isScrolling && !self.isEditing;
+      valid = (self.sortingDelegate || self.enableEditOnLongPress) && !isScrolling; //JDT0515 && !self.isEditing;
     }
     else if (gestureRecognizer == _sortingPanGesture) 
     {
@@ -536,6 +536,8 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
 
 - (void)longPressGestureUpdated:(UILongPressGestureRecognizer *)longPressGesture
 {
+  NSLog(@"longPressGestureUpdated");
+  
     if (self.enableEditOnLongPress && !self.editing) {
         CGPoint locationTouch = [longPressGesture locationInView:self];
         NSInteger position = [self.layoutStrategy itemPositionFromLocation:locationTouch];
@@ -713,10 +715,11 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
 }
 
 - (void)sortingMoveDidStartAtPoint:(CGPoint)point
-{
+{  
     NSInteger position = [self.layoutStrategy itemPositionFromLocation:point];
     
     GMGridViewCell *item = [self cellForItemAtIndex:position];
+NSLog(@"sortingMoveDidStartAtPoint %f %f %d %@", point.x, point.y, position, item);
     
     [self bringSubviewToFront:item];
     _sortMovingItem = item;
@@ -735,6 +738,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
         [self.sortingDelegate GMGridView:self didStartMovingCell:_sortMovingItem];
     }
     
+    /* JDT0515
     if ([self.sortingDelegate respondsToSelector:@selector(GMGridView:shouldAllowShakingBehaviorWhenMovingCell:atIndex:)]) 
     {
         [_sortMovingItem shake:[self.sortingDelegate GMGridView:self shouldAllowShakingBehaviorWhenMovingCell:_sortMovingItem atIndex:position]];
@@ -743,10 +747,12 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     {
         [_sortMovingItem shake:YES];
     }
+    */
 }
 
 - (void)sortingMoveDidStopAtPoint:(CGPoint)point
 {
+  NSLog(@"sortingMoveDidStopAtPoint %f %f", point.x, point.y);
     [_sortMovingItem shake:NO];
     
     _sortMovingItem.tag = _sortFuturePosition + kTagOffset;
@@ -783,6 +789,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
 
 - (void)sortingMoveDidContinueToPoint:(CGPoint)point
 {
+  NSLog(@"sortingMoveDidContinueToPoint %f %f", point.x, point.y);
     int position = [self.layoutStrategy itemPositionFromLocation:point];
     int tag = position + kTagOffset;
     

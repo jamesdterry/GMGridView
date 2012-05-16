@@ -34,13 +34,11 @@
 
 @end
 
-
-
-
 @implementation UIView (GMGridViewAdditions)
 
 - (void)shakeStatus:(BOOL)enabled
 {
+  /* JDT0515
     if (enabled) 
     {
         CGFloat rotation = 0.03;
@@ -59,6 +57,7 @@
     {
         [self.layer removeAnimationForKey:@"shakeAnimation"];
     }
+  */
 }
 
 - (void)recursiveEnumerateSubviewsUsingBlock:(void (^)(UIView *view, BOOL *stop))block {
