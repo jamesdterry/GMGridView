@@ -1705,6 +1705,11 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     
     cell.tag = kTagOffset - 1;
     _numberTotalItems--;
+  
+  if (_numberTotalItems == 0) {
+    // End delete mode
+    self.editing = NO;
+  }
     
     BOOL shouldScroll = animation & GMGridViewItemAnimationScroll;
     BOOL animate = animation & GMGridViewItemAnimationFade;
